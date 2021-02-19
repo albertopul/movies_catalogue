@@ -7,15 +7,23 @@
         <h1 class="mt-5">Witaj w mojej bibliotece filmów</h1>
         <p class="lead">Znajdziesz tutaj tylko najlepsze tytuły!</p>        
     </div>
+    <div class="col-lg-12 mb-4">
+        {% for list_type in available_lists %}
+            {% if list_type == current_list %}
+                <a href="{{ url_for('homepage', list_type=list_type) }}" class="btn btn-outline-info active">{{ list_type.title()|replace("_", " ") }}</a>
+             {% else %}
+                <a href="{{ url_for('homepage', list_type=list_type) }}" class="btn btn-outline-info">{{ list_type.title()|replace("_", " ") }}</a>
+            {% endif %}
+        {% endfor %}</div>
     {% for movie in movies %}
     <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
-            <img class="card-img-top" src="https://tnstateparks.com/assets/images/hero-images/4777/300x500.png" alt="rhtbtyg">
+            <img class="card-img-top" src="{{ tmdb_image_url(movie.poster_path, "w780") }}" alt="">
             <div class="card-body">
-                <h4 class="card-title">Tytuł filmu</h4>
+                <h4 class="card-title">{{ movie.title }}</h4>
             </div>
             <div class="card-footer text-center">
-                <a href="#" class="btn btn-primary">Pokaż więcej</a>
+                <a href="{{ url_for('movie_details', movie_id=movie.id) }}" class="btn btn-primary">Pokaż więcej</a>
             </div>
         </div>
     </div>
