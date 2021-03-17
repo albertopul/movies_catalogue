@@ -62,5 +62,5 @@ def test_single_movie_cast(monkeypatch):
     response = requests_mock.return_value
     response.json.return_value = mock_actor_details
     monkeypatch.setattr("tmdb_client.requests.get", requests_mock)
-    actor_details = tmdb_client.get_single_movie_cast(movie_id=123, how_many=how_many)
+    actor_details = tmdb_client.get_single_movie_cast(movie_id=123, how_many=12)
     assert actor_details == mock_actor_details 
