@@ -18,7 +18,7 @@ def homepage():
     movies = tmdb_client.get_movies(how_many=8, list_type=selected_list)
     for movie in movies:
         random.shuffle(movies)
-    return render_template("homepage.html", movie=movie, movies=movies, current_list=selected_list, available_lists=available_lists)
+    return render_template("homepage.html", movies=movies, current_list=selected_list, available_lists=available_lists)
 
 
 @app.context_processor
