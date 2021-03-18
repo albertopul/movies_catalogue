@@ -1,9 +1,8 @@
 import requests
 import json
 import os
-from API_TOKEN import API_TOKEN
 
-API_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZGEzYzhhYmEyODVhZDBhZjYxM2E5NmEyMWZlMDllNiIsInN1YiI6IjYwMmQzNWVhZDRiOWQ5MDAzZmQyOWY1MiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.oDchyvN4gbwaNHGH2QsEs2mJiUGJStE76Rvby3CY3kU"
+API_TOKEN = os.environ.get("TMDB_API_TOKEN", "")
 
 
 
