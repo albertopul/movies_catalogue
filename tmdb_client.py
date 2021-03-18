@@ -14,7 +14,6 @@ def call_tmdb_api(endpoint):
        "Authorization": f"Bearer {API_TOKEN}"
    }
    response = requests.get(full_url, headers=headers)
-   response.raise_for_status()
    return response.json()
 
 
@@ -102,6 +101,7 @@ def get_poster_url(poster_api_path, size="w342"):
 #     return response.json()["cast"]
 
 def get_single_movie_cast(movie_id, how_many):
+    print(call_tmdb_api(f"movie/{movie_id}/credits"))
     return call_tmdb_api(f"movie/{movie_id}/credits")["cast"][:how_many]
 
 # def get_movie_images(movie_id):
