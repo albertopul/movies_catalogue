@@ -1,15 +1,17 @@
 import requests
 import json
+import os
+
+API_TOKEN = os.environ.get("TMDB_API_TOKEN", "")
 
 
-api_token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZGEzYzhhYmEyODVhZDBhZjYxM2E5NmEyMWZlMDllNiIsInN1YiI6IjYwMmQzNWVhZDRiOWQ5MDAzZmQyOWY1MiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.oDchyvN4gbwaNHGH2QsEs2mJiUGJStE76Rvby3CY3kU"
 
 
 
 def call_tmdb_api(endpoint):
    full_url = f"https://api.themoviedb.org/3/{endpoint}"
    headers = {
-       "Authorization": f"Bearer {api_token}"
+       "Authorization": f"Bearer {API_TOKEN}"
    }
    response = requests.get(full_url, headers=headers)
    response.raise_for_status()
@@ -20,7 +22,7 @@ def call_tmdb_api(endpoint):
 # def get_top_rated_movies():
 #     endpoint = "https://api.themoviedb.org/3/movie/top_rated"
 #     headers = {
-#         "Authorization": f"Bearer {api_token}"
+#         "Authorization": f"Bearer {API_TOKEN}"
 #     }
 #     response = requests.get(endpoint, headers=headers)
 #     return response.json()
@@ -32,7 +34,7 @@ def get_top_rated_movies():
 # def get_upcoming_movies():
 #     endpoint = "https://api.themoviedb.org/3/movie/upcoming"
 #     headers = {
-#         "Authorization": f"Bearer {api_token}"
+#         "Authorization": f"Bearer {API_TOKEN}"
 #     }
 #     response = requests.get(endpoint, headers=headers)
 #     return response.json()   
@@ -44,7 +46,7 @@ def get_upcoming_movies():
 # def get_popular_movies():
 #     endpoint = "https://api.themoviedb.org/3/movie/popular"
 #     headers = {
-#         "Authorization": f"Bearer {api_token}"
+#         "Authorization": f"Bearer {API_TOKEN}"
 #     }
 #     response = requests.get(endpoint, headers=headers)
 #     return response.json()
@@ -56,7 +58,7 @@ def get_popular_movies():
 # def get_now_playing_movies():
 #     endpoint = "https://api.themoviedb.org/3/movie/now_playing"
 #     headers = {
-#         "Authorization": f"Bearer {api_token}"
+#         "Authorization": f"Bearer {API_TOKEN}"
 #     }
 #     response = requests.get(endpoint, headers=headers)
 #     return response.json()  
@@ -68,7 +70,7 @@ def get_now_playing_movies():
 # def get_single_movie(movie_id):
 #     endpoint = f"https://api.themoviedb.org/3/movie/{movie_id}"
 #     headers = {
-#         "Authorization": f"Bearer {api_token}"
+#         "Authorization": f"Bearer {API_TOKEN}"
 #     }
 #     response = requests.get(endpoint, headers=headers)
 #     return response.json()
@@ -105,7 +107,7 @@ def get_single_movie_cast(movie_id, how_many):
 # def get_movie_images(movie_id):
 #     endpoint = f"https://api.themoviedb.org/3/movie/{movie_id}/images"
 #     headers = {
-#         "Authorization": f"Bearer {api_token}"
+#         "Authorization": f"Bearer {API_TOKEN}"
 #     }
 #     response = requests.get(endpoint, headers=headers)
 #     return response.json()["cast"]
@@ -117,7 +119,7 @@ def get_movie_images(movie_id):
 # def get_movies_list(list_type):
 #     endpoint = f"https://api.themoviedb.org/3/movie/{list_type}"
 #     headers = {
-#         "Authorization": f"Bearer {api_token}"
+#         "Authorization": f"Bearer {API_TOKEN}"
 #     }
 #     response = requests.get(endpoint, headers=headers)
 #     response.raise_for_status()
