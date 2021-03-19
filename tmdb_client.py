@@ -6,8 +6,6 @@ API_TOKEN = os.environ.get("TMDB_API_TOKEN", "")
 
 
 
-
-
 def call_tmdb_api(endpoint):
    full_url = f"https://api.themoviedb.org/3/{endpoint}"
    headers = {
@@ -101,7 +99,6 @@ def get_poster_url(poster_api_path, size="w342"):
 #     return response.json()["cast"]
 
 def get_single_movie_cast(movie_id, how_many):
-    print(call_tmdb_api(f"movie/{movie_id}/credits"))
     return call_tmdb_api(f"movie/{movie_id}/credits")["cast"][:how_many]
 
 # def get_movie_images(movie_id):
@@ -126,4 +123,13 @@ def get_movie_images(movie_id):
 #     return response.json()
 
 def get_movies_list(list_type):
-   return call_tmdb_api(f"movie/{list_type}")
+    return call_tmdb_api(f"movie/{list_type}")
+
+
+def get_airing_today():
+    return call_tmdb_api(f"tv/airing_today")["results"]
+
+
+
+def search(search_query):
+    return call_tmdb_api(f"search/movie/?query={search_query}")["results"]
